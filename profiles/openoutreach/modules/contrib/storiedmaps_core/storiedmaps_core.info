@@ -1,0 +1,43 @@
+name = StoriedMaps Core
+description = Core location functionality for StoriedMaps.
+core = 7.x
+package = StoriedMaps
+php = 5.2.4
+dependencies[] = conditional_fields
+dependencies[] = context
+dependencies[] = ctools
+dependencies[] = debut_location
+dependencies[] = email
+dependencies[] = features
+dependencies[] = link
+dependencies[] = list
+dependencies[] = masonry
+dependencies[] = masonry_views
+dependencies[] = media
+dependencies[] = page_manager
+features[conditional_fields][] = node:location
+features[context][] = location_listing
+features[ctools][] = context:context:3
+features[ctools][] = page_manager:pages_default:1
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[field][] = node-location-field_content_image
+features[field][] = node-location-field_email
+features[field][] = node-location-field_media
+features[field][] = node-location-field_organization_name
+features[field][] = node-location-field_organization_or_business
+features[field][] = node-location-field_phone_number
+features[field][] = node-location-field_website
+features[page_manager_handlers][] = node_view_panel_context
+features[page_manager_pages][] = location_listing_landing
+features[page_manager_pages][] = storiedmaps_home
+features[views_view][] = location_listing
+mtime = 1418175973
+stylesheets[all][] = storiedmaps_core.css
+
+; Information added by Drupal.org packaging script on 2014-12-11
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "storiedmaps_core"
+datestamp = "1418333522"
+

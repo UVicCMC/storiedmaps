@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the StoriedMaps Core feature.
+ */
+
+include_once 'storiedmaps_core.features.inc';
