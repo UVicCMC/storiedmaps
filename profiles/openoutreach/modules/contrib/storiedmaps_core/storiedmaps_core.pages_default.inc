@@ -494,7 +494,10 @@ function storiedmaps_core_default_page_manager_pages() {
   $page->admin_title = 'Location listing landing';
   $page->admin_description = 'Landing page for text based listing of locations.';
   $page->path = 'location-landing';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Featured Sites',
@@ -665,7 +668,7 @@ function storiedmaps_core_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'StoriedMaps Home';
   $page->admin_description = 'A custom panels page for the home page of  StoriedMaps.';
-  $page->path = 'storiedmaps_home';
+  $page->path = 'storiedmaps-home';
   $page->access = array();
   $page->menu = array();
   $page->arguments = array();
@@ -683,7 +686,7 @@ function storiedmaps_core_default_page_manager_pages() {
   $handler->weight = 0;
   $handler->conf = array(
     'title' => 'Panel',
-    'no_blocks' => 0,
+    'no_blocks' => 1,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
     'body_classes_to_add' => '',

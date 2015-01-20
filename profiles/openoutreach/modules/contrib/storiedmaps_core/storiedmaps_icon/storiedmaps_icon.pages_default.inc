@@ -174,7 +174,10 @@ function storiedmaps_icon_default_page_manager_pages() {
   $page->admin_title = 'Location icons';
   $page->admin_description = '';
   $page->path = 'location-icons';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array();
   $page->conf = array(
@@ -361,7 +364,10 @@ You can also <a href="/location-terms">explore the icons in a larger format</a>.
   $page->admin_title = 'Location term landing';
   $page->admin_description = '';
   $page->path = 'location-categories';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'none',
     'title' => '',

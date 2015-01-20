@@ -563,10 +563,10 @@ function storiedmaps_icon_views_default_views() {
   $handler->display->display_options['filters']['field_location_icon_fid']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_location_icon_fid']['group'] = 1;
 
-  /* Display: Content pane: sustainable living */
-  $handler = $view->new_display('panel_pane', 'Content pane: sustainable living', 'panel_pane_2');
+  /* Display: Content pane: child terms */
+  $handler = $view->new_display('panel_pane', 'Content pane: child terms', 'panel_pane_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Sustainable living locations';
+  $handler->display->display_options['display_description'] = 'Displays all the child terms of a given parent';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -618,6 +618,18 @@ function storiedmaps_icon_views_default_views() {
     'image_link' => 'content',
   );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Term ID */
+  $handler->display->display_options['arguments']['tid']['id'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['tid']['field'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['relationship'] = 'parent';
+  $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['tid']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['tid']['title'] = '%1 icons';
+  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'taxonomy_tid';
+  $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Taxonomy vocabulary: Machine name */
@@ -628,16 +640,6 @@ function storiedmaps_icon_views_default_views() {
     'location_type' => 'location_type',
   );
   $handler->display->display_options['filters']['machine_name']['group'] = 1;
-  /* Filter criterion: Taxonomy term: Parent term */
-  $handler->display->display_options['filters']['parent']['id'] = 'parent';
-  $handler->display->display_options['filters']['parent']['table'] = 'taxonomy_term_hierarchy';
-  $handler->display->display_options['filters']['parent']['field'] = 'parent';
-  $handler->display->display_options['filters']['parent']['relationship'] = 'parent';
-  $handler->display->display_options['filters']['parent']['value']['value'] = '14';
-  $handler->display->display_options['filters']['parent']['expose']['operator_id'] = 'parent_op';
-  $handler->display->display_options['filters']['parent']['expose']['label'] = 'Parent term';
-  $handler->display->display_options['filters']['parent']['expose']['operator'] = 'parent_op';
-  $handler->display->display_options['filters']['parent']['expose']['identifier'] = 'parent';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -647,176 +649,16 @@ function storiedmaps_icon_views_default_views() {
   $handler->display->display_options['allow']['title_override'] = 'title_override';
   $handler->display->display_options['allow']['exposed_form'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
-
-  /* Display: Content pane: nature */
-  $handler = $view->new_display('panel_pane', 'Content pane: nature', 'panel_pane_4');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Nature locations';
-  $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'masonry_views_grid';
-  $handler->display->display_options['style_options']['masonry_width'] = '60';
-  $handler->display->display_options['style_options']['masonry_animated'] = TRUE;
-  $handler->display->display_options['style_options']['masonry_resizable'] = TRUE;
-  $handler->display->display_options['style_options']['masonry_center'] = FALSE;
-  $handler->display->display_options['style_options']['masonry_rtl'] = FALSE;
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['inline'] = array(
-    'field_location_icon' => 'field_location_icon',
-    'name' => 'name',
+  $handler->display->display_options['argument_input'] = array(
+    'tid' => array(
+      'type' => 'user',
+      'context' => 'entity:comment.author',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Taxonomy term: Term ID',
+    ),
   );
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Taxonomy term: Parent term */
-  $handler->display->display_options['relationships']['parent']['id'] = 'parent';
-  $handler->display->display_options['relationships']['parent']['table'] = 'taxonomy_term_hierarchy';
-  $handler->display->display_options['relationships']['parent']['field'] = 'parent';
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Taxonomy term: Term ID */
-  $handler->display->display_options['fields']['tid']['id'] = 'tid';
-  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['tid']['field'] = 'tid';
-  $handler->display->display_options['fields']['tid']['label'] = '';
-  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['tid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['tid']['separator'] = '';
-  /* Field: Taxonomy term: Term ID */
-  $handler->display->display_options['fields']['tid_1']['id'] = 'tid_1';
-  $handler->display->display_options['fields']['tid_1']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['tid_1']['field'] = 'tid';
-  $handler->display->display_options['fields']['tid_1']['relationship'] = 'parent';
-  $handler->display->display_options['fields']['tid_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['tid_1']['separator'] = '';
-  /* Field: Taxonomy term: Location icon */
-  $handler->display->display_options['fields']['field_location_icon']['id'] = 'field_location_icon';
-  $handler->display->display_options['fields']['field_location_icon']['table'] = 'field_data_field_location_icon';
-  $handler->display->display_options['fields']['field_location_icon']['field'] = 'field_location_icon';
-  $handler->display->display_options['fields']['field_location_icon']['label'] = '';
-  $handler->display->display_options['fields']['field_location_icon']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_location_icon']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_location_icon']['settings'] = array(
-    'image_style' => 'icon_medium',
-    'image_link' => 'content',
-  );
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Taxonomy vocabulary: Machine name */
-  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
-  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
-  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
-  $handler->display->display_options['filters']['machine_name']['value'] = array(
-    'location_type' => 'location_type',
-  );
-  $handler->display->display_options['filters']['machine_name']['group'] = 1;
-  /* Filter criterion: Taxonomy term: Parent term */
-  $handler->display->display_options['filters']['parent']['id'] = 'parent';
-  $handler->display->display_options['filters']['parent']['table'] = 'taxonomy_term_hierarchy';
-  $handler->display->display_options['filters']['parent']['field'] = 'parent';
-  $handler->display->display_options['filters']['parent']['relationship'] = 'parent';
-  $handler->display->display_options['filters']['parent']['value']['value'] = '13';
-  $handler->display->display_options['filters']['parent']['expose']['operator_id'] = 'parent_op';
-  $handler->display->display_options['filters']['parent']['expose']['label'] = 'Parent term';
-  $handler->display->display_options['filters']['parent']['expose']['operator'] = 'parent_op';
-  $handler->display->display_options['filters']['parent']['expose']['identifier'] = 'parent';
-  $handler->display->display_options['allow']['use_pager'] = 0;
-  $handler->display->display_options['allow']['items_per_page'] = 0;
-  $handler->display->display_options['allow']['offset'] = 0;
-  $handler->display->display_options['allow']['link_to_view'] = 0;
-  $handler->display->display_options['allow']['more_link'] = 0;
-  $handler->display->display_options['allow']['path_override'] = 0;
-  $handler->display->display_options['allow']['title_override'] = 'title_override';
-  $handler->display->display_options['allow']['exposed_form'] = 0;
-  $handler->display->display_options['allow']['fields_override'] = 0;
-
-  /* Display: Content pane: cultural */
-  $handler = $view->new_display('panel_pane', 'Content pane: cultural', 'panel_pane_5');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Culture and society locations';
-  $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'masonry_views_grid';
-  $handler->display->display_options['style_options']['masonry_width'] = '60';
-  $handler->display->display_options['style_options']['masonry_animated'] = TRUE;
-  $handler->display->display_options['style_options']['masonry_resizable'] = TRUE;
-  $handler->display->display_options['style_options']['masonry_center'] = FALSE;
-  $handler->display->display_options['style_options']['masonry_rtl'] = FALSE;
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['inline'] = array(
-    'field_location_icon' => 'field_location_icon',
-    'name' => 'name',
-  );
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Taxonomy term: Parent term */
-  $handler->display->display_options['relationships']['parent']['id'] = 'parent';
-  $handler->display->display_options['relationships']['parent']['table'] = 'taxonomy_term_hierarchy';
-  $handler->display->display_options['relationships']['parent']['field'] = 'parent';
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Taxonomy term: Term ID */
-  $handler->display->display_options['fields']['tid']['id'] = 'tid';
-  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['tid']['field'] = 'tid';
-  $handler->display->display_options['fields']['tid']['label'] = '';
-  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['tid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['tid']['separator'] = '';
-  /* Field: Taxonomy term: Term ID */
-  $handler->display->display_options['fields']['tid_1']['id'] = 'tid_1';
-  $handler->display->display_options['fields']['tid_1']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['tid_1']['field'] = 'tid';
-  $handler->display->display_options['fields']['tid_1']['relationship'] = 'parent';
-  $handler->display->display_options['fields']['tid_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['tid_1']['separator'] = '';
-  /* Field: Taxonomy term: Location icon */
-  $handler->display->display_options['fields']['field_location_icon']['id'] = 'field_location_icon';
-  $handler->display->display_options['fields']['field_location_icon']['table'] = 'field_data_field_location_icon';
-  $handler->display->display_options['fields']['field_location_icon']['field'] = 'field_location_icon';
-  $handler->display->display_options['fields']['field_location_icon']['label'] = '';
-  $handler->display->display_options['fields']['field_location_icon']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_location_icon']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_location_icon']['settings'] = array(
-    'image_style' => 'icon_medium',
-    'image_link' => 'content',
-  );
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Taxonomy vocabulary: Machine name */
-  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
-  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
-  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
-  $handler->display->display_options['filters']['machine_name']['value'] = array(
-    'location_type' => 'location_type',
-  );
-  $handler->display->display_options['filters']['machine_name']['group'] = 1;
-  /* Filter criterion: Taxonomy term: Parent term */
-  $handler->display->display_options['filters']['parent']['id'] = 'parent';
-  $handler->display->display_options['filters']['parent']['table'] = 'taxonomy_term_hierarchy';
-  $handler->display->display_options['filters']['parent']['field'] = 'parent';
-  $handler->display->display_options['filters']['parent']['relationship'] = 'parent';
-  $handler->display->display_options['filters']['parent']['value']['value'] = '25';
-  $handler->display->display_options['filters']['parent']['expose']['operator_id'] = 'parent_op';
-  $handler->display->display_options['filters']['parent']['expose']['label'] = 'Parent term';
-  $handler->display->display_options['filters']['parent']['expose']['operator'] = 'parent_op';
-  $handler->display->display_options['filters']['parent']['expose']['identifier'] = 'parent';
-  $handler->display->display_options['allow']['use_pager'] = 0;
-  $handler->display->display_options['allow']['items_per_page'] = 0;
-  $handler->display->display_options['allow']['offset'] = 0;
-  $handler->display->display_options['allow']['link_to_view'] = 0;
-  $handler->display->display_options['allow']['more_link'] = 0;
-  $handler->display->display_options['allow']['path_override'] = 0;
-  $handler->display->display_options['allow']['title_override'] = 'title_override';
-  $handler->display->display_options['allow']['exposed_form'] = 0;
-  $handler->display->display_options['allow']['fields_override'] = 0;
 
   /* Display: Content pane: sidebar icons */
   $handler = $view->new_display('panel_pane', 'Content pane: sidebar icons', 'panel_pane_sidebar');

@@ -74,7 +74,7 @@ function storiedmaps_story_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-12f27825-56e8-4c06-96db-6d5ed1e9073a';
+    $pane->pid = 'new-dfee102f-a7f1-41b3-a07d-32a5318fe563';
     $pane->panel = 'two_brick_bottom';
     $pane->type = 'views';
     $pane->subtype = 'media';
@@ -83,7 +83,7 @@ function storiedmaps_story_default_page_manager_pages() {
     $pane->configuration = array(
       'override_pager_settings' => 0,
       'use_pager' => 0,
-      'nodes_per_page' => '10',
+      'nodes_per_page' => '9',
       'pager_id' => '0',
       'offset' => '0',
       'more_link' => 0,
@@ -92,7 +92,7 @@ function storiedmaps_story_default_page_manager_pages() {
       'link_to_view' => 0,
       'args' => '',
       'url' => '',
-      'display' => 'block_2',
+      'display' => 'block_1',
       'override_title' => 0,
       'override_title_text' => '',
     );
@@ -104,9 +104,9 @@ function storiedmaps_story_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '12f27825-56e8-4c06-96db-6d5ed1e9073a';
-    $display->content['new-12f27825-56e8-4c06-96db-6d5ed1e9073a'] = $pane;
-    $display->panels['two_brick_bottom'][0] = 'new-12f27825-56e8-4c06-96db-6d5ed1e9073a';
+    $pane->uuid = 'dfee102f-a7f1-41b3-a07d-32a5318fe563';
+    $display->content['new-dfee102f-a7f1-41b3-a07d-32a5318fe563'] = $pane;
+    $display->panels['two_brick_bottom'][0] = 'new-dfee102f-a7f1-41b3-a07d-32a5318fe563';
     $pane = new stdClass();
     $pane->pid = 'new-10bb14b1-6fed-4d86-9a63-50d98fb6355b';
     $pane->panel = 'two_brick_left_above';
