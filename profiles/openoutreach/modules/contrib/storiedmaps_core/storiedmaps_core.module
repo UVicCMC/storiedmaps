@@ -7,18 +7,6 @@
 include_once 'storiedmaps_core.features.inc';
 
 /**
- * Implements hook_modules_installed().
- *
- * Unset distracting messages at install time.
- */
-function storiedmaps_core_modules_enabled($modules) {
-  if (drupal_installation_attempted() && in_array('storiedmaps_core', $modules)) {
-    drupal_get_messages('status');
-    drupal_get_messages('warning');
-  }
-}
-
-/**
  * Implements hook_context_load_alter().
  *
  * Move the loging block to the footer region.

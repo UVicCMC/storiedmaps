@@ -361,6 +361,11 @@ function openoutreach_prepare($form, &$form_state) {
  * Submit form to prepare site for prime time.
  */
 function openoutreach_prepare_submit($form, &$form_state) {
+  // Set error messages to an appropriate setting for production sites.
+  // Don't do this in Features as sites may wish to turn on error reporting.
+  // Set here as features rebuilding may trigger distracting error messages.
+  variable_set('error_level', 0);
+
   openoutreach_install_permissions();
 
   // Try to allocate enough time to rebuild features.
@@ -402,7 +407,7 @@ function openoutreach_finished($form, &$form_state) {
   );
 
   $form['openingtext'] = array(
-    '#markup' => '<h2>' . t('Congratulations, you just installed StoriedMaps!') . '</h2>',
+    '#markup' => '<h2>' . t('Congratulations, you just installed Open Outreach!') . '</h2>',
   );
 
   $form['openoutreach_logo'] = array(
@@ -427,9 +432,6 @@ function openoutreach_finished_submit($form, &$form_state) {
   // Explicitly set the 'done' install_state status.
   // This really should be handled by Drupal core, but apparently sometimes it isn't....
   variable_set('install_task', 'done');
-
-  // Set the StoriedMaps home page.
-  variable_set('site_frontpage', 'storiedmaps-home');
 
   // And away we go.
   // $form_state['redirect'] won't work here since we are still in the
