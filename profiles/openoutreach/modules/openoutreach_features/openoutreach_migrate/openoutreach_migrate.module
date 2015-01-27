@@ -43,6 +43,7 @@ function openoutreach_migrate_map() {
     'OpenOutreachMigrationTermLocationRegion' => 'debut_location',
     'OpenOutreachMigrationMenuLinksSection' => 'debut_section',
     'OpenOutreachMigrationNodeSection' => 'debut_section',
+    'StoriedMapsMigrationNodeStory' => 'storiedmaps_story',
   );
   // Allow other modules to alter the migrations to, for example, use
   // a custom class.

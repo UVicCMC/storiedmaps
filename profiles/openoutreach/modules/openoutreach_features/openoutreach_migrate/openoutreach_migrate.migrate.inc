@@ -391,6 +391,30 @@ class OpenOutreachMigrationNodeSection extends OpenOutreachMigrationNode {
 }
 
 /**
+ * Story migration for nodes in StoriedMaps.
+ */
+class StoriedMapsMigrationNodeStory extends OpenOutreachMigrationNode {
+
+  public function __construct($arguments) {
+    $this->setProperties('story');
+    parent::__construct($arguments);
+    $this->description = t('Import story content.');
+    $this->addFieldMapping('field_reference_location', 'location')
+      ->description(t('The location of a story.'))
+      ->sourceMigration('OpenOutreachMigrationNodeLocation');
+    // Require the nodes that are referenced.
+    $this->dependencies[] = 'OpenOutreachMigrationNodeLocation';
+  }
+
+  function csvcolumns() {
+    $columns = parent::csvcolumns();
+    $columns[] = array('location', 'Location');
+    return $columns;
+  }
+
+}
+
+/**
  * Base migration for terms in OpenOutreach.
  */
 abstract class OpenOutreachMigrationTerm extends OpenOutreachMigration {
