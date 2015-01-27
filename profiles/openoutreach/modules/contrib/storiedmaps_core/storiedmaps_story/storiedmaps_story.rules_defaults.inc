@@ -16,7 +16,8 @@ function storiedmaps_story_default_rules_configuration() {
       "REQUIRES" : [ "rules" ],
       "ON" : { "node_insert" : [] },
       "IF" : [
-        { "node_is_of_type" : { "node" : [ "node" ], "type" : { "value" : { "story" : "story" } } } }
+        { "node_is_of_type" : { "node" : [ "node" ], "type" : { "value" : { "story" : "story" } } } },
+        { "NOT node_is_published" : { "node" : [ "node" ] } }
       ],
       "DO" : [
         { "drupal_message" : { "message" : "Thank you for contributing a story. It will now be reviewed by an editor before publication." } },
