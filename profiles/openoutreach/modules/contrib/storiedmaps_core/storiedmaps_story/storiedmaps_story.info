@@ -27,16 +27,17 @@ features[features_api][] = api:1
 features[field][] = node-story-body
 features[field][] = node-story-field_content_image
 features[field][] = node-story-field_end_date
-features[field][] = node-story-field_first_nations
 features[field][] = node-story-field_media
 features[field][] = node-story-field_reference_location
 features[field][] = node-story-field_start_date
+features[field][] = node-story-field_story_type
 features[field][] = node-story-field_submitted_by
 features[field][] = node-story-field_tags
 features[field][] = node-story-field_told_by
 features[node][] = story
 features[page_manager_pages][] = story_landing_page
 features[rules_config][] = rules_story_created
+features[taxonomy][] = story_type
 features[user_permission][] = create story content
 features[user_permission][] = delete any story content
 features[user_permission][] = delete own story content
@@ -56,12 +57,5 @@ features[variable][] = node_options_story
 features[variable][] = node_preview_story
 features[variable][] = node_submitted_story
 features[views_view][] = story
-mtime = 1418176285
+mtime = 1422407231
 stylesheets[all][] = storiedmaps_story.css
-
-; Information added by Drupal.org packaging script on 2014-12-11
-version = "7.x-1.x-dev"
-core = "7.x"
-project = "storiedmaps_core"
-datestamp = "1418333522"
-

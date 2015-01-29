@@ -21,6 +21,7 @@ features[page_manager_handlers][] = term_view_panel_context
 features[page_manager_pages][] = location_icons
 features[page_manager_pages][] = location_term_landing
 features[panels_mini][] = icons
+features[views_view][] = location_term_page
 features[views_view][] = location_term_parent
 features[views_view][] = location_terms
 mtime = 1418175000

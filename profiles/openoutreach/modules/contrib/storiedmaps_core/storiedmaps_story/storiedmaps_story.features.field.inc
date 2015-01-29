@@ -95,7 +95,7 @@ function storiedmaps_story_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '8',
+        'weight' => '7',
       ),
     ),
   );
@@ -214,7 +214,7 @@ function storiedmaps_story_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '6',
+        'weight' => '5',
       ),
     ),
   );
@@ -300,87 +300,6 @@ function storiedmaps_story_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-story-field_first_nations'.
-  $fields['node-story-field_first_nations'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_first_nations',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => '',
-          1 => 'First Nations story',
-        ),
-        'allowed_values_function' => '',
-      ),
-      'translatable' => '0',
-      'type' => 'list_boolean',
-    ),
-    'field_instance' => array(
-      'bundle' => 'story',
-      'default_value' => array(
-        0 => array(
-          'value' => 0,
-        ),
-      ),
-      'deleted' => '0',
-      'description' => 'Please check if this is a First nations story.',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '6',
-        ),
-        'ical' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'rss' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '7',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '2',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_first_nations',
-      'label' => 'First Nations story',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(
-          'display_label' => 0,
-        ),
-        'type' => 'options_onoff',
-        'weight' => '5',
-      ),
-    ),
-  );
-
   // Exported field: 'node-story-field_media'.
   $fields['node-story-field_media'] = array(
     'field_config' => array(
@@ -425,7 +344,7 @@ function storiedmaps_story_field_default_fields() {
             'file_view_mode' => 'default',
           ),
           'type' => 'file_rendered',
-          'weight' => '7',
+          'weight' => '9',
         ),
         'ical' => array(
           'label' => 'above',
@@ -544,7 +463,7 @@ function storiedmaps_story_field_default_fields() {
             'link' => 1,
           ),
           'type' => 'entityreference_label',
-          'weight' => '8',
+          'weight' => '6',
         ),
         'ical' => array(
           'label' => 'above',
@@ -584,7 +503,7 @@ function storiedmaps_story_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '7',
+        'weight' => '6',
       ),
     ),
   );
@@ -666,6 +585,89 @@ function storiedmaps_story_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-story-field_story_type'.
+  $fields['node-story-field_story_type'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_story_type',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'story_type',
+            'parent' => '0',
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'story',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => '7',
+        ),
+        'ical' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'rss' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_story_type',
+      'label' => 'Story type',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '8',
       ),
     ),
   );
@@ -796,7 +798,7 @@ function storiedmaps_story_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '9',
+          'weight' => '8',
         ),
         'ical' => array(
           'label' => 'above',
@@ -926,15 +928,14 @@ function storiedmaps_story_field_default_fields() {
   t('Body');
   t('Click the "Select media" button to add an image or document from your computer or embed a video from YouTube or Vimeo. If you wish to add more than one media item, click the "Add another item" button after you have uploaded the first.');
   t('Enter a comma-separated list of words to describe your content.');
-  t('First Nations story');
   t('If applicable, enter the name of the person who told this story.');
   t('If known, please enter the approximate end date for your story.');
   t('If known, please enter the approximate start date for your story.');
   t('Image');
   t('Location');
   t('Media');
-  t('Please check if this is a First nations story.');
   t('Please enter your name as the person submitting the story.');
+  t('Story type');
   t('Submitted by');
   t('Tags');
   t('Told by');
