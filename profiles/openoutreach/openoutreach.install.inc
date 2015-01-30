@@ -62,7 +62,7 @@ function openoutreach_form_install_configure_form_alter(&$form, &$form_state) {
   );
 
   // Set some reasonable defaults for site configuration form.
-  $form['site_information']['site_name']['#default_value'] = 'Open Outreach';
+  $form['site_information']['site_name']['#default_value'] = 'StoriedMaps';
   $form['admin_account']['account']['name']['#default_value'] = 'admin';
   // Don't set the email address to "admin@localhost" as that will fail D7's
   // email address validation.
@@ -346,7 +346,7 @@ function openoutreach_prepare($form, &$form_state) {
   );
 
   $form['openingtext'] = array(
-    '#markup' => '<h2>' . t('Open Outreach now needs to do a bit more to get everything set up.') . '</h2><p>' . t('This step may take a few minutes.') . '</p>',
+    '#markup' => '<h2>' . t('StoriedMaps now needs to do a bit more to get everything set up.') . '</h2><p>' . t('This step may take a few minutes.') . '</p>',
   );
 
   $form['submit'] = array(
@@ -411,7 +411,7 @@ function openoutreach_finished($form, &$form_state) {
   );
 
   $form['openoutreach_logo'] = array(
-    '#markup' => theme('image', array('path' => drupal_get_path('profile', 'openoutreach') . '/images/openoutreach_logo.png')),
+    '#markup' => theme('image', array('path' => drupal_get_path('profile', 'openoutreach') . '/images/storiedmaps_logo.png')),
   );
 
   $form['submit'] = array(
