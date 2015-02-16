@@ -62,7 +62,7 @@ function openoutreach_form_install_configure_form_alter(&$form, &$form_state) {
   );
 
   // Set some reasonable defaults for site configuration form.
-  $form['site_information']['site_name']['#default_value'] = 'StoriedMaps';
+  $form['site_information']['site_name']['#default_value'] = openoutreach_get_distribution_name();
   $form['admin_account']['account']['name']['#default_value'] = 'admin';
   // Don't set the email address to "admin@localhost" as that will fail D7's
   // email address validation.
@@ -87,6 +87,15 @@ function openoutreach_install_configure_form_submit($form, &$form_state) {
     // We don't want contact without captcha.
     module_enable(array('contact', 'captcha'));
   }
+}
+
+/**
+ * Submit handler for install_configure_form. Conditionally enable sample
+ * content module.
+ */
+function openoutreach_get_distribution_name() {
+  $info = install_profile_info('openoutreach');
+  return $info['distribution_name'];
 }
 
 /**
@@ -346,7 +355,7 @@ function openoutreach_prepare($form, &$form_state) {
   );
 
   $form['openingtext'] = array(
-    '#markup' => '<h2>' . t('StoriedMaps now needs to do a bit more to get everything set up.') . '</h2><p>' . t('This step may take a few minutes.') . '</p>',
+    '#markup' => '<h2>' . t('!distribution_name now needs to do a bit more to get everything set up.', array('!distribution_name' => openoutreach_get_distribution_name())) . '</h2><p>' . t('This step may take a few minutes.') . '</p>',
   );
 
   $form['submit'] = array(
@@ -407,7 +416,7 @@ function openoutreach_finished($form, &$form_state) {
   );
 
   $form['openingtext'] = array(
-    '#markup' => '<h2>' . t('Congratulations, you just installed StoriedMaps!') . '</h2>',
+    '#markup' => '<h2>' . t('Congratulations, you just installed !distribution_name!', array('!distribution_name' => openoutreach_get_distribution_name())) . '</h2>',
   );
 
   $form['openoutreach_logo'] = array(
