@@ -307,6 +307,3 @@ Say you want to add a “story” to be migrated.
     git add .
     git commit -m "Add a new default story."
     ```
-
-
-​p. 5
