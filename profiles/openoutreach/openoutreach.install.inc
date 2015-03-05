@@ -17,33 +17,24 @@ function openoutreach_install_tasks($install_state) {
 
   // Set up the theme selection task.
   $tasks['openoutreach_theme_form'] = array(
-    'display_name' => t('Choose a theme'),
+    'display_name' => st('Choose a theme'),
     'type' => 'form',
   );
 
-  // Set up the prepare task to close it out.
-  $tasks['openoutreach_prepare'] = array(
-    'display_name' => t('Prepare site'),
-    'type' => 'form',
+  // Set up the wrapup task.
+  $tasks['openoutreach_wrapup'] = array(
+    'display_name' => st('Final details'),
   );
 
   return $tasks;
 }
 
 /**
- * Implements hook_install_tasks_alter()
- */
-function openoutreach_install_tasks_alter(&$tasks, $install_state) {
-  // Create a more informative finished page.
-  $tasks['install_finished']['function'] = 'openoutreach_finished';
-  $tasks['install_finished']['display_name'] = t('Finished!');
-  $tasks['install_finished']['type'] = 'form';
-}
-
-/**
  * Implements hook_install_configure_form_alter().
  */
 function openoutreach_form_install_configure_form_alter(&$form, &$form_state) {
+  global $install_state;
+
   $form['site_elements'] = array(
     '#type' => 'fieldset',
     '#title' => t('Site elements'),
@@ -62,7 +53,9 @@ function openoutreach_form_install_configure_form_alter(&$form, &$form_state) {
   );
 
   // Set some reasonable defaults for site configuration form.
-  $form['site_information']['site_name']['#default_value'] = openoutreach_get_distribution_name();
+  if (isset($install_state['profile_info']['distribution_name'])) {
+    $form['site_information']['site_name']['#default_value'] = $install_state['profile_info']['distribution_name'];
+  }
   $form['admin_account']['account']['name']['#default_value'] = 'admin';
   // Don't set the email address to "admin@localhost" as that will fail D7's
   // email address validation.
@@ -80,22 +73,15 @@ function openoutreach_form_install_configure_form_alter(&$form, &$form_state) {
  * content module.
  */
 function openoutreach_install_configure_form_submit($form, &$form_state) {
+
+  // Set a flag that we'll later test to enable the migration module.
   if (!empty($form_state['values']['migrate'])) {
-    module_enable(array('openoutreach_migrate'));
+    variable_set('openoutreach_migrate', TRUE);
   }
   if (!empty($form_state['values']['contact'])) {
     // We don't want contact without captcha.
     module_enable(array('contact', 'captcha'));
   }
-}
-
-/**
- * Submit handler for install_configure_form. Conditionally enable sample
- * content module.
- */
-function openoutreach_get_distribution_name() {
-  $info = install_profile_info('openoutreach');
-  return $info['distribution_name'];
 }
 
 /**
@@ -220,7 +206,7 @@ function openoutreach_install_permissions() {
  * Form to choose the starting theme from list of available options.
  */
 function openoutreach_theme_form($form, &$form_state) {
-  drupal_set_title(st('Choose a theme'));
+  drupal_set_title(t('Choose a theme'));
 
   // Declare a white list of themes offered for selection along with data used
   // to determine what modules should be enabled and what blocks configured.
@@ -250,9 +236,15 @@ function openoutreach_theme_form($form, &$form_state) {
     '#default_value' => 'outreach',
   );
 
+  $distribution_name = isset($install_state['profile_info']['distribution_name']) ? $install_state['profile_info']['distribution_name'] : t('Open Outreach');
+
+  $form['openingtext'] = array(
+    '#markup' => '<h3>' . t('!distribution_name now needs to do a bit more to get everything set up.', array('!distribution_name' => $distribution_name)) . '</h3><p>' . t('This step may take a few minutes.') . '</p>',
+  );
+
   $form['submit'] = array(
     '#type' => 'submit',
-    '#value' => t('Choose theme'),
+    '#value' => t('Choose theme and set up site'),
   );
 
   $form['#attached']['css'] = array(
@@ -343,33 +335,14 @@ function openoutreach_theme_form_submit($form, &$form_state) {
 }
 
 /**
- * Form to talk about preparing the site for prime time.
+ * Complete the install.
  */
-function openoutreach_prepare($form, &$form_state) {
-  drupal_set_title(st('Configure site'));
+function openoutreach_wrapup(&$install_state) {
+  if (variable_get('openoutreach_migrate', FALSE)) {
+    module_enable(array('openoutreach_migrate'));
+    variable_del('openoutreach_migrate');
+  }
 
-  $form = array();
-
-  $form['opening'] = array(
-    '#markup' => '<h1>' . t('Prepare Site') . '</h1>',
-  );
-
-  $form['openingtext'] = array(
-    '#markup' => '<h2>' . t('!distribution_name now needs to do a bit more to get everything set up.', array('!distribution_name' => openoutreach_get_distribution_name())) . '</h2><p>' . t('This step may take a few minutes.') . '</p>',
-  );
-
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Prepare your site'),
-  );
-
-  return $form;
-}
-
-/**
- * Submit form to prepare site for prime time.
- */
-function openoutreach_prepare_submit($form, &$form_state) {
   // Set error messages to an appropriate setting for production sites.
   // Don't do this in Features as sites may wish to turn on error reporting.
   // Set here as features rebuilding may trigger distracting error messages.
@@ -377,6 +350,7 @@ function openoutreach_prepare_submit($form, &$form_state) {
 
   openoutreach_install_permissions();
 
+<<<<<<< HEAD
   // Try to allocate enough time to rebuild features.
   drupal_set_time_limit(240);
 
@@ -452,4 +426,6 @@ function openoutreach_finished_submit($form, &$form_state) {
   if ($install_state['interactive']) {
     drupal_goto('<front>');
   }
+=======
+>>>>>>> 4d5e5715349705236c653a7aee4b8d00aa4a11be
 }
