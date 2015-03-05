@@ -10,49 +10,49 @@
 function storiedmaps_story_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: create story content.
+  // Exported permission: 'create story content'.
   $permissions['create story content'] = array(
     'name' => 'create story content',
     'roles' => array(
-      0 => 'authenticated user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
 
-  // Exported permission: delete any story content.
+  // Exported permission: 'delete any story content'.
   $permissions['delete any story content'] = array(
     'name' => 'delete any story content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'editor',
+      'administrator' => 'administrator',
+      'editor' => 'editor',
     ),
     'module' => 'node',
   );
 
-  // Exported permission: delete own story content.
+  // Exported permission: 'delete own story content'.
   $permissions['delete own story content'] = array(
     'name' => 'delete own story content',
     'roles' => array(
-      0 => 'contributor',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
 
-  // Exported permission: edit any story content.
+  // Exported permission: 'edit any story content'.
   $permissions['edit any story content'] = array(
     'name' => 'edit any story content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'editor',
+      'administrator' => 'administrator',
+      'editor' => 'editor',
     ),
     'module' => 'node',
   );
 
-  // Exported permission: edit own story content.
+  // Exported permission: 'edit own story content'.
   $permissions['edit own story content'] = array(
     'name' => 'edit own story content',
     'roles' => array(
-      0 => 'contributor',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );

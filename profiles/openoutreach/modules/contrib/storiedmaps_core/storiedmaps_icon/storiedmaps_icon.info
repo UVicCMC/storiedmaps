@@ -2,18 +2,15 @@ name = StoriedMaps Icon
 description = Icon displays for StoriedMaps.
 core = 7.x
 package = StoriedMaps
-php = 5.2.4
-dependencies[] = ctools
 dependencies[] = image
-dependencies[] = masonry
 dependencies[] = masonry_views
 dependencies[] = page_manager
 dependencies[] = panels_mini
-dependencies[] = views
+dependencies[] = views_content
 features[ctools][] = page_manager:pages_default:1
 features[ctools][] = panels_mini:panels_default:1
 features[ctools][] = views:views_default:3.0
-features[features_api][] = api:1
+features[features_api][] = api:2
 features[image][] = icon-large
 features[image][] = icon_medium
 features[image][] = icon_medium_small
@@ -24,11 +21,11 @@ features[panels_mini][] = icons
 features[views_view][] = location_term_page
 features[views_view][] = location_term_parent
 features[views_view][] = location_terms
-mtime = 1418175000
+features_exclude[dependencies][views] = views
 
-; Information added by Drupal.org packaging script on 2014-12-11
+; Information added by Drupal.org packaging script on 2015-03-05
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "storiedmaps_core"
-datestamp = "1418333522"
+datestamp = "1425515883"
 
