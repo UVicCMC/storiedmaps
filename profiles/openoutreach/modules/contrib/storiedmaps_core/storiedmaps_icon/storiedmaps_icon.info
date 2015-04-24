@@ -23,9 +23,9 @@ features[views_view][] = location_term_parent
 features[views_view][] = location_terms
 features_exclude[dependencies][views] = views
 
-; Information added by Drupal.org packaging script on 2015-03-05
+; Information added by Drupal.org packaging script on 2015-04-22
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "storiedmaps_core"
-datestamp = "1425515883"
+datestamp = "1429747082"
 

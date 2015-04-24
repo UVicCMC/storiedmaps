@@ -31,17 +31,9 @@ function storiedmaps_icon_image_default_styles() {
 
   // Exported image style: icon-large.
   $styles['icon-large'] = array(
-    'name' => 'icon-large',
     'label' => 'icon-large',
     'effects' => array(
       9 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 100,
@@ -55,17 +47,9 @@ function storiedmaps_icon_image_default_styles() {
 
   // Exported image style: icon_medium.
   $styles['icon_medium'] = array(
-    'name' => 'icon_medium',
     'label' => 'icon_medium',
     'effects' => array(
       7 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 60,
@@ -79,17 +63,9 @@ function storiedmaps_icon_image_default_styles() {
 
   // Exported image style: icon_medium_small.
   $styles['icon_medium_small'] = array(
-    'name' => 'icon_medium_small',
     'label' => 'icon_medium_small',
     'effects' => array(
       10 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 40,
