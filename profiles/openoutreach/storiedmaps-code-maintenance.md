@@ -5,7 +5,7 @@ Prepared by: Nedjo Rogers
 
 Composition date: Feb. 16, 2015
 
-Edit date: Feb. 16, 2015
+Edit date: Apr. 24, 2015
 
 Overview
 ========
@@ -214,6 +214,15 @@ To set up a local clone of the repository:
 
 Steps for updating to a new Open Outreach release are:
 
+-   Start in the root directory of your local clone of the GitHub repository for Open Outreach.
+    ```
+    cd path/to/repository
+    ```
+
+-   Pull any changes from the repository's origin (GitHub):
+    ```
+    git pull origin master
+    ```
 
 -   Remove all files from the openoutreach repository except the .git
     directory.
@@ -223,7 +232,7 @@ Steps for updating to a new Open Outreach release are:
 
 -   Add all changes:
     ```
-    git add -A.
+    git add -A
     ```
 
 -   Commit the changes:
@@ -232,6 +241,22 @@ Steps for updating to a new Open Outreach release are:
     ```
 
 -   Push your changes:
+    ```
+    git push origin master
+    ```
+### Updating to a new release of Open Outreach
+
+Once a new release of Open Outreach has been committed to the Open
+Outreach repository on GitHub:
+
+
+-   Pull the changes from the Open Outreach repo on GitHub (added above
+    as a “remote”):
+    ```
+    git pull openoutreach master
+    ```
+
+-   Push them to GitHub
     ```
     git push origin master
     ```
@@ -254,10 +279,18 @@ StoriedMaps GitHub repo to profiles/openoutreach/modules/contrib:
 
 -   [StoriedMaps Core](https://www.drupal.org/project/storiedmaps_core)
 
-
 If there is a new version of StoriedMaps Core and/or any of the
 dependencies available:
 
+-   Start in the root directory of your local clone of the GitHub repository for StoriedMaps.
+    ```
+    cd path/to/repository
+    ```
+
+-   Pull any changes from the repository's origin (GitHub):
+    ```
+    git pull origin master
+    ```
 
 -   In your local clone of the StoriedMaps repository, delete the module
     you’re updating from profiles/openoutreach/modules/contrib.
@@ -276,19 +309,7 @@ dependencies available:
     git commit -m "Update to the latest dev version of StoriedMaps."
     ```
 
-### Updating to a new release of Open Outreach
-
-Once a new release of Open Outreach has been committed to the Open
-Outreach repository on GitHub:
-
-
--   Pull the changes from the Open Outreach repo on GitHub (added above
-    as a “remote”):
-    ```
-    git pull openoutreach master
-    ```
-
--   Push them to GitHub
+-   Push your changes:
     ```
     git push origin master
     ```
@@ -297,6 +318,15 @@ Outreach repository on GitHub:
 
 Say you want to add a “story” to be migrated.
 
+-   Start in the root directory of your local clone of the GitHub repository for StoriedMaps.
+    ```
+    cd path/to/repository
+    ```
+
+-   Pull any changes from the repository's origin (GitHub):
+    ```
+    git pull origin master
+    ```
 
 -   Identify the file to be edited. In this case, that’s
     profiles/openoutreach/modules/openoutreach\_features/openoutreach\_migrate/local/story/csv.
@@ -306,4 +336,5 @@ Say you want to add a “story” to be migrated.
     ```
     git add .
     git commit -m "Add a new default story."
+    git push origin master
     ```
