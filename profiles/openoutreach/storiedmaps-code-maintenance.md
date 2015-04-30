@@ -249,6 +249,15 @@ Steps for updating to a new Open Outreach release are:
 Once a new release of Open Outreach has been committed to the Open
 Outreach repository on GitHub:
 
+-   Start in the root directory of your local clone of the GitHub repository for StoriedMaps.
+    ```
+    cd path/to/repository
+    ```
+
+-   Pull any changes from the repository's origin (GitHub):
+    ```
+    git pull origin master
+    ```
 
 -   Pull the changes from the Open Outreach repo on GitHub (added above
     as a “remote”):
